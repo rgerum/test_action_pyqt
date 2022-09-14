@@ -2,7 +2,6 @@ import unittest
 import numpy as np
 
 import sys
-import mock
 import os
 from pathlib import Path
 import matplotlib.pyplot as plt
