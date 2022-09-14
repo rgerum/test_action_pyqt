@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-
+import re
 import sys
 import os
 from pathlib import Path
@@ -87,8 +87,10 @@ plt.show(hide_window=True)
             for line in fp:
                 if in_block is True:
                     block += line
-                    if line.startswith("plt.figure(1).axes[0].set_position([0.123333, 0.110000, 0.227941, 0.770000])"):
-                        found = True
+                    if line.startswith("plt.figure(1).axes[0].set_position("):
+                        data = re.match(r"plt\.figure\(1\)\.axes\[0\]\.set_position\(\[([\.\d]*), ([\.\d]*), ([\.\d]*), ([\.\d]*)]\)", line).groups()
+                        if np.all([np.abs(float(d1)-d2)<0.2 for d1, d2 in zip(data, [0.12, 0.11, 0.23, 0.77])]):
+                            found = True
                 if line.startswith("#% start: automatic generated code from pylustrator"):
                     in_block = True
                 if line.startswith("#% end: automatic generated code from pylustrator"):
