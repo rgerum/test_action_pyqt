@@ -1,21 +1,15 @@
 import unittest
 import numpy as np
 import re
-import sys
-import os
 from pathlib import Path
-import matplotlib.pyplot as plt
 from matplotlib import _pylab_helpers
-import pylustrator
-from qtpy import QtWidgets
+
 
 class TestFits(unittest.TestCase):
 
     def setUp(self):
-        print("setup")
         self.filename = Path(self.id().split(".")[-1] + ".py")
         with self.filename.open("w") as fp:
-            print("write tmp file")
             fp.write("""
 import matplotlib.pyplot as plt
 import numpy as np
@@ -54,32 +48,20 @@ plt.show(hide_window=True)
         if tmp_file.exists():
             tmp_file.unlink()
 
-    def test_fitCamParametersFromObjects(self):
-        app = QtWidgets.QApplication(sys.argv)
-
-    def test_fitCamParametersFromObjects2(self):
-        print("read file")
+    def test_moveFigure(self):
         with open(self.filename, "rb") as fp:
             text = fp.read()
-        print("exec file")
         exec(compile(text, self.filename, 'exec'), globals())
 
-
-        print("get figure")
         for figure in _pylab_helpers.Gcf.figs:
             figure = _pylab_helpers.Gcf.figs[figure].canvas.figure
-            print("select element")
             figure.figure_dragger.select_element(figure.axes[0])
 
-            print("start move")
             figure.selection.start_move()
             figure.selection.addOffset((-1, 0), figure.selection.dir)
-            print("end move")
             figure.selection.end_move()
-            print("save")
             figure.change_tracker.save()
 
-        print("open saved file")
         with self.filename.open("r") as fp:
             in_block = False
             found = False
