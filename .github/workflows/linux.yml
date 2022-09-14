@@ -30,15 +30,3 @@ jobs:
       run: |
         ulimit -c unlimited
         sudo catchsegv xvfb-run --auto-servernum `which coverage` run -m pytest
-    - name: chmod
-      if: always()
-      run: |
-        if [[ -d "$DIRECTORY" ]]; then
-          sudo chmod -R +rwx /var/crash
-        fi
-    - name: Upload artifacts
-      if: always()
-      uses: actions/upload-artifact@master
-      with:
-        name: crashes
-        path: /var/crash
