@@ -30,4 +30,4 @@ jobs:
         QT_DEBUG_PLUGINS: 1
       run: |
         ulimit -c unlimited
-        xvfb-run pytest
+        pytest
