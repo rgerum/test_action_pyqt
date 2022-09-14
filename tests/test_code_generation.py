@@ -18,7 +18,9 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Pylustrator. If not, see <http://www.gnu.org/licenses/>
-
+import sys
+print("start")
+print(sys.argv)
 import matplotlib
 matplotlib.use('agg')
 import unittest
@@ -27,8 +29,9 @@ import sys
 from pathlib import Path
 import matplotlib.pyplot as plt
 from matplotlib import _pylab_helpers
+print("import qt")
 from qtpy import QtCore, QtWidgets, QtGui
-
+print("done")
 
 """ some magic to prevent PyQt5 from swallowing exceptions """
 # Back up the reference to the exceptionhook
