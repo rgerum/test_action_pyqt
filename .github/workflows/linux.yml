@@ -24,8 +24,6 @@ jobs:
         pip install pylustrator --no-deps
     - name: Test
       env:
-        QT_DEBUG_PLUGINS: 1
         QT_QPA_PLATFORM: "offscreen"
       run: |
-        ulimit -c unlimited
         pytest
