@@ -15,6 +15,8 @@ class TestFits(unittest.TestCase):
         with self.filename.open("w") as fp:
             print("write tmp file")
             fp.write("""
+import sys
+sys.argv = ['-platform', 'minimal']            
 import matplotlib.pyplot as plt
 import numpy as np
 
