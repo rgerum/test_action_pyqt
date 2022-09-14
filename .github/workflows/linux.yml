@@ -7,7 +7,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Set up Python 3.8
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v4
       with:
         python-version: 3.8
         cache: 'pip'
@@ -17,6 +17,7 @@ jobs:
         pip install pytest coverage
     - name: Install dependencies2
       run: |
+        pip install PyQt5
         pip install natsort numpy matplotlib
         pip install qtpy qtawesome
         pip install scikit-image
