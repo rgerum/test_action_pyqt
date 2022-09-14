@@ -13,7 +13,7 @@ class TestFits(unittest.TestCase):
 
 
     def test_fitCamParametersFromObjects(self):
-        app = QtWidgets.QApplication(['-platform', 'offscreen'])
+        app = QtWidgets.QApplication(sys.argv)
 
 
 
