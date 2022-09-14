@@ -15,6 +15,15 @@ jobs:
         sudo apt install -y xvfb x11-utils libxkbcommon-x11-0
         python -m pip install --upgrade pip
         pip install pyside2 pytest coverage pytest-qt
+    - name: Install dependencies2
+      run: |
+        python -m pip install --upgrade pip
+        pip install PyQt5
+        pip install pytest codecov mock
+        pip install natsort numpy matplotlib
+        pip install qtpy qtawesome
+        pip install scikit-image
+        pip install pylustrator
     - name: Test
       env:
         QT_DEBUG_PLUGINS: 1
