@@ -20,7 +20,7 @@ jobs:
         pip install natsort numpy matplotlib
         pip install qtpy qtawesome
         pip install scikit-image
-        pip install pylustrator
+        pip install pylustrator --no-deps
     - name: Test
       env:
         QT_DEBUG_PLUGINS: 1
